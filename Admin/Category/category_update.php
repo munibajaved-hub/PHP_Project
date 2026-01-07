@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){ //get request
     header("Location: category_add.php");
     exit;
 }
-
+$id = $_POST['category_id'];
 $category_name = $_POST['category_name']; //Fruit
 
 // ✅ Call validation function
@@ -42,7 +42,7 @@ unset($_SESSION['error']);
 
 
 // ✅ Insert into database if valid
-$query = "INSERT INTO categories (category_name) VALUES ('$category_name')";
+$query = "UPDATE categories SET category_name = '$category_name' WHERE id = $id";
 mysqli_query($conn, $query);
 
 // ✅ Success → clear session

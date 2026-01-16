@@ -1,7 +1,8 @@
 <?php
 session_start();
-if(!isset($_SESSION['role']) == 'admin'){ 
-  header("Location: login.php");
+if(!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
+  header("Location: ../login.php");
+  exit;
 }
 ?>
 
@@ -565,7 +566,7 @@ if(!isset($_SESSION['role']) == 'admin'){
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="./logout.php">
+                      <a class="dropdown-item" href="../logout.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>

@@ -1,8 +1,8 @@
 <?php
-session_start();
+include('../../inc/admin/main.php');
 $errors = $_SESSION['error'] ?? "";
 unset($_SESSION['error']);
-include('../../inc/admin/main.php');
+
 
 ?>
 

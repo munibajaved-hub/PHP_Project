@@ -1,3 +1,31 @@
+
+<?php
+
+
+include_once($_SERVER['DOCUMENT_ROOT'] . '/2504C1_PHP/Project/Config/connection.php');
+
+session_start();
+// Database connection aur session pehle se include honi chahiye
+$cartCount = 0;
+$totalPrice = 0.00;
+
+if (isset($_SESSION['user_id'])) {
+    $uid = $_SESSION['user_id'];
+    $userName = $_SESSION['user_name'];
+
+    // 1. Count nikalne ke liye
+    $res = mysqli_query($conn, "SELECT COUNT(*) as total FROM cart WHERE user_id = $uid");
+    $row = mysqli_fetch_assoc($res);
+    $cartCount = $row['total'];
+
+    // 2. Total price nikalne ke liye (Optional par behtar hai)
+    $sumRes = mysqli_query($conn, "SELECT SUM(c.quantity * p.price) as grand_total 
+                                   FROM cart c JOIN products p ON c.product_id = p.p_id 
+                                   WHERE c.user_id = $uid");
+    $sumRow = mysqli_fetch_assoc($sumRes);
+    $totalPrice = $sumRow['grand_total'] ? $sumRow['grand_total'] : 0.00;
+}
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -37,10 +65,11 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
+                <li><a href="./User/addcart.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $cartCount; ?></span></a>
+                </li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
+            <div class="header__cart__price">item: <span>RS: <?php echo number_format($totalPrice, 2); ?></span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -53,7 +82,11 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href= "./login.php"><i class="fa fa-user"></i> Login</a>
+                <?php if(isset($_SESSION['user_id'])): ?>
+                    <a href="./logout.php"><i class="fa fa-user"></i> <?php echo htmlspecialchars($userName); ?> (Logout)</a>
+                <?php else: ?>
+                    <a href="./login.php"><i class="fa fa-user"></i> Login</a>
+                <?php endif; ?>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -119,7 +152,11 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="./login.php"><i class="fa fa-user"></i> Login</a>
+                                <?php if(isset($_SESSION['user_id'])): ?>
+                                    <a href="./logout.php"><i class="fa fa-user"></i> <?php echo htmlspecialchars($userName); ?> (Logout)</a>
+                                <?php else: ?>
+                                    <a href="./login.php"><i class="fa fa-user"></i> Login</a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -154,10 +191,12 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
+                            <li><a href="./User/addcart.php"><i class="fa fa-shopping-bag"></i>
+                                    <span><?php echo $cartCount; ?></span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price">item: <span>RS:
+                                <?php echo number_format($totalPrice, 2); ?></span></div>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,16 @@ session_start();
 include ('Config/connection.php');
 $error = "";
 
+// Display session messages
+if (isset($_SESSION['success_message'])) {
+    echo "<div class='alert alert-success'>" . $_SESSION['success_message'] . "</div>";
+    unset($_SESSION['success_message']);
+}
+if (isset($_SESSION['error_message'])) {
+    echo "<div class='alert alert-danger'>" . $_SESSION['error_message'] . "</div>";
+    unset($_SESSION['error_message']);
+}
+
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -16,8 +26,9 @@ if(isset($_POST['login'])) {
         if(password_verify($password, $user['password'])) {
 
             $_SESSION['id'] = $user['id'];
-            
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['user_name'] = $user['full_name'];
 
             if($user['role'] == 'customer') {
                 header("Location: index.php");

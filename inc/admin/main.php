@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
-  header("Location: ../login.php");
+  header("Location: /2504C1_PHP/Project/login.php");
   exit;
 }
 ?>
@@ -202,12 +202,12 @@ if(!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="./Category/category_add.php" class="menu-link">
+                  <a href="/2504C1_PHP/Project/Admin/Category/category_add.php" class="menu-link">
                     <div data-i18n="Account">Addd Category</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="./Category/category_view.php" class="menu-link">
+                  <a href="/2504C1_PHP/Project/Admin/Category/category_List.php" class="menu-link">
                     <div data-i18n="Notifications">View Category</div>
                   </a>
                 </li>
@@ -566,7 +566,7 @@ if(!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../logout.php">
+                      <a class="dropdown-item" href="/2504C1_PHP/Project/logout.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>

@@ -1,9 +1,30 @@
 <?php
- include '../inc/user/header.php';
+
+if (isset($_SESSION['success'])) {
+    echo "<div class='alert alert-success'>" . $_SESSION['success'] . "</div>";
+    unset($_SESSION['success']);
+}
+if (isset($_SESSION['error'])) {
+    echo "<div class='alert alert-danger'>" . $_SESSION['error'] . "</div>";
+    unset($_SESSION['error']);
+}
+?>
+<?php
+include '../inc/user/header.php';
 include '../Config/connection.php';
 
+// Display session messages
+if (isset($_SESSION['success_message'])) {
+    echo "<div class='alert alert-success'>" . $_SESSION['success_message'] . "</div>";
+    unset($_SESSION['success_message']);
+}
+if (isset($_SESSION['error_message'])) {
+    echo "<div class='alert alert-danger'>" . $_SESSION['error_message'] . "</div>";
+    unset($_SESSION['error_message']);
+}
+
 if(isset($_GET['id'])){
-    $id = $_GET['id'];
+    $id = $_GET['id']; //4
 
     $productquery = "select * from products where p_id = $id";
     $prodres = mysqli_query($conn, $productquery);
@@ -133,7 +154,11 @@ if(isset($_GET['id'])){
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
+                        <form action="add_to_cart.php" method="POST" style="display: inline;">
+                            <input type="hidden" name="product_id" value="<?php echo $prodrow['p_id']; ?>">
+                            <input type="hidden" name="quantity" id="cart-quantity" value="1">
+                            <button type="submit" class="primary-btn">ADD TO CART</button>
+                        </form>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
@@ -314,6 +339,7 @@ if(isset($_GET['id'])){
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const qtyInput = document.getElementById('product-qty'); //2
+    const cartQuantityInput = document.getElementById('cart-quantity'); //hidden field
     const priceDisplay = document.getElementById('total-price'); //550
     const unitPrice = parseFloat(qtyInput.getAttribute('data-price')); //550
 
@@ -324,6 +350,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let currentQty = parseInt(qtyInput.value);
             if (isNaN(currentQty) || currentQty < 1) currentQty = 1;
             
+            // Update hidden cart quantity field
+            cartQuantityInput.value = currentQty;
+            
             let totalPrice = unitPrice * currentQty; //550 * 2
             priceDisplay.innerText = totalPrice.toFixed(2);
         }, 50);
@@ -333,6 +362,9 @@ document.addEventListener('DOMContentLoaded', function() {
     qtyInput.addEventListener('input', function() {
         let currentQty = parseInt(this.value);
         if (!isNaN(currentQty) && currentQty > 0) {
+            // Update hidden cart quantity field
+            cartQuantityInput.value = currentQty;
+            
             let totalPrice = unitPrice * currentQty;
             priceDisplay.innerText = totalPrice.toFixed(2);
         }

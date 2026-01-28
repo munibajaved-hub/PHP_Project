@@ -2,10 +2,6 @@
 ob_start(); 
 
 include '../Config/connection.php';
-
-
-
-
 include '../inc/user/header.php';
 
 if (!isset($_SESSION['user_id'])) {

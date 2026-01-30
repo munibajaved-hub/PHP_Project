@@ -66,8 +66,7 @@ if (isset($_SESSION['user_id'])) {
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
-                <li><a href="./User/addcart.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $cartCount; ?></span></a>
-                </li>
+                <li><a href="/2504C1_PHP/Project/User/addcart.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $cartCount; ?></span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>RS: <?php echo number_format($totalPrice, 2); ?></span></div>
         </div>
@@ -83,26 +82,26 @@ if (isset($_SESSION['user_id'])) {
             </div>
             <div class="header__top__right__auth">
                 <?php if(isset($_SESSION['user_id'])): ?>
-                    <a href="./logout.php"><i class="fa fa-user"></i> <?php echo htmlspecialchars($userName); ?> (Logout)</a>
+                    <a href="/2504C1_PHP/Project/logout.php"><i class="fa fa-user"></i> <?php echo htmlspecialchars($userName); ?> (Logout)</a>
                 <?php else: ?>
-                    <a href="./login.php"><i class="fa fa-user"></i> Login</a>
+                    <a href="/2504C1_PHP/Project/login.php"><i class="fa fa-user"></i> Login</a>
                 <?php endif; ?>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
+                <li><a href="/2504C1_PHP/Project/index.php">Home</a></li>
+                <li><a href="/2504C1_PHP/Project/shop-grid.html">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.php">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="/2504C1_PHP/Project/shop-details.html">Shop Details</a></li>
+                        <li><a href="/2504C1_PHP/Project/User/addcart.php">Shoping Cart</a></li>
+                        <li><a href="/2504C1_PHP/Project/User/checkout.php">Check Out</a></li>
+                        <li><a href="/2504C1_PHP/Project/blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="/2504C1_PHP/Project/blog.html">Blog</a></li>
+                <li><a href="/2504C1_PHP/Project/contact.html">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -153,9 +152,9 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                             <div class="header__top__right__auth">
                                 <?php if(isset($_SESSION['user_id'])): ?>
-                                    <a href="./logout.php"><i class="fa fa-user"></i> <?php echo htmlspecialchars($userName); ?> (Logout)</a>
+                                    <a href="/2504C1_PHP/Project/logout.php"><i class="fa fa-user"></i> <?php echo htmlspecialchars($userName); ?> (Logout)</a>
                                 <?php else: ?>
-                                    <a href="./login.php"><i class="fa fa-user"></i> Login</a>
+                                    <a href="/2504C1_PHP/Project/login.php"><i class="fa fa-user"></i> Login</a>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -167,24 +166,24 @@ if (isset($_SESSION['user_id'])) {
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="/2504C1_PHP/Project/index.php"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li class="active"><a href="/2504C1_PHP/Project/index.php">Home</a></li>
+                            <li><a href="/2504C1_PHP/Project/shop-grid.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.php">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="/2504C1_PHP/Project/shop-details.html">Shop Details</a></li>
+                                    <li><a href="/2504C1_PHP/Project/User/addcart.php">Shoping Cart</a></li>
+                                    <li><a href="/2504C1_PHP/Project/User/checkout.php">Check Out</a></li>
+                                    <li><a href="/2504C1_PHP/Project/blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="/2504C1_PHP/Project/blog.html">Blog</a></li>
+                            <li><a href="/2504C1_PHP/Project/contact.html">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -192,7 +191,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
-                            <li><a href="./User/addcart.php"><i class="fa fa-shopping-bag"></i>
+                            <li><a href="/2504C1_PHP/Project/User/addcart.php"><i class="fa fa-shopping-bag"></i>
                                     <span><?php echo $cartCount; ?></span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>RS:

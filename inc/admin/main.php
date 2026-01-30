@@ -81,7 +81,7 @@ if(!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="/2504C1_PHP/Project/Admin/index.php" class="app-brand-link">
               <span class="app-brand-logo demo">
                 <svg
                   width="25"
@@ -150,7 +150,7 @@ if(!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item active">
-              <a href="index.html" class="menu-link">
+              <a href="/2504C1_PHP/Project/Admin/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -203,7 +203,7 @@ if(!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="/2504C1_PHP/Project/Admin/Category/category_add.php" class="menu-link">
-                    <div data-i18n="Account">Addd Category</div>
+                    <div data-i18n="Account">Add Category</div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -211,11 +211,37 @@ if(!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
                     <div data-i18n="Notifications">View Category</div>
                   </a>
                 </li>
-                <!-- <li class="menu-item">
-                  <a href="pages-account-settings-connections.html" class="menu-link">
-                    <div data-i18n="Connections">Connections</div>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-package"></i>
+                <div data-i18n="Account Settings">Orders</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/2504C1_PHP/Project/Admin/orders.php" class="menu-link">
+                    <div data-i18n="Account">Manage Orders</div>
                   </a>
-                </li> -->
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Account Settings">Products</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/2504C1_PHP/Project/Admin/Product/product_add.php" class="menu-link">
+                    <div data-i18n="Account">Add Product</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/2504C1_PHP/Project/Admin/Product/product_list.php" class="menu-link">
+                    <div data-i18n="Notifications">View Products</div>
+                  </a>
+                </li>
               </ul>
             </li>
             <li class="menu-item">

@@ -128,7 +128,7 @@ $(document).ready(function() {
         
         // 150ms ka delay taake Ogani theme ki apni JS pehle value change karle
         setTimeout(function() {
-            var newVal = $input.val();
+            var newVal = $input.val(); //2
             var cartId = $input.data('id');
 
             // --- 1. AJAX call database update karne ke liye ---
@@ -137,8 +137,8 @@ $(document).ready(function() {
                 method: 'POST',
                 data: {
                     ajax_update: 1,
-                    cart_id: cartId,
-                    qty: newVal
+                    cart_id: cartId,  //20
+                    qty: newVal //3
                 },
                 success: function(response) {
                     console.log("Database Sync: " + response);

@@ -80,7 +80,7 @@ try {
         throw new Exception("Failed to create order: " . mysqli_error($conn));
     }
     
-    $order_id = mysqli_insert_id($conn);
+    $order_id = mysqli_insert_id($conn); //1
     
     // Insert order items
     foreach ($cart_products as $product) {
